@@ -35,4 +35,35 @@ We can install it in our project with command (https://daisyui.com/docs/install/
 
 In tailwind.config.js file inside plugins we have to just write daisyui and it is ready to use.
 - Now we can use the components from Daisy UI in our project.
-- From components of __DaisyUi__ in components section we have NavBar section from there we can copy the jsx of any component of in our __App.jsx__ and then it will displayed on our page
+- From components of __DaisyUi__ in components section we have NavBar section from there we can copy the jsx of any component in our __App.jsx__ and then it will displayed on our page.
+- For Now we have added the Navbar in our **App.jsx**
+
+# Created a Separate NavBar file
+Now next we created a separte __NavBar.jsx__ file and inside that we added the code for our NavBar 
+which was there in __App.jsx__
+
+# Installing the React-Router-Dom
+We use Routers in our app to route from one component to another component  easily 
+(npm i react-router-dom) Using the command we have installed the React-router-dome in our project 
+We will create our Routes in our App.js so we have imported Browser Router,Routes and Route in our 
+App.js then we have used them to define our routes to different pages
+<BrowserRouter basename="/">
+<Routes>
+  <Route path="/" element={<>Home Page</>}/>
+  <Route path="/login" element={<>Login Page</>}/>
+  <Route path="/testPage" element={<>Login Page</>}/>
+
+</Routes>
+</BrowserRouter>
+
+Now Inside Our Routes we have created some children components like below 
+<BrowserRouter basename="/">
+<Routes>
+  <Route path="/" element={<Body/>}> 
+     <Route path="/login" element={<Login/>}/>
+     <Route path="/profile" element={<Profile/>}/>
+  </Route>
+
+</Routes>
+</BrowserRouter>
+Now to Render these Children Components we will use  <Outlet/> which will come from react-router-dom to render children components 
