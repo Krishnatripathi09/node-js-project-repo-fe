@@ -25,3 +25,14 @@ By copying the below command in Index.css file we configure it to use as default
 We are gonna use component design library DaisyUI. It gives us already built Components that we can use in our app instead of building it from scratch.
 We can install it in our project with command (https://daisyui.com/docs/install/) 
 - Official Documentation Link (https://daisyui.com/docs/install/)
+- After installing add the configuration for Daisy UI in tailwind.config.js file
+- module.exports = {
+  //...
+  plugins: [
+    require('daisyui'),
+  ],
+}
+
+In tailwind.config.js file inside plugins we have to just write daisyui and it is ready to use.
+- Now we can use the components from Daisy UI in our project.
+- From components of __DaisyUi__ in components section we have NavBar section from there we can copy the jsx of any component of in our __App.jsx__ and then it will displayed on our page
