@@ -67,3 +67,50 @@ Now Inside Our Routes we have created some children components like below
 </Routes>
 </BrowserRouter>
 Now to Render these Children Components we will use  <Outlet/> which will come from react-router-dom to render children components 
+
+# Calling BAck-End from Front-End 
+To call our BE from front-End we need to install a library axios using (npm install axios) then we 
+can use it connect our frontEnd using useState Hook Before making the API request make sure that you 
+have installed and used cors package in App.js (npm i cors) and (app.use(cors()); in app.js of B.E) so that it allows your FE to make request on Backend Even if it is running on different domain or port
+
+After that using useState() hook in frontEnd we set our State-Variables to be updated with user input of Email 
+and  Password  
+For eg: const [email,setEmailId] = useState("")
+const [password,setPassword]= useState("")
+
+then using axios we make an post request to our BE when we are logging In 
+for eg: const handleLogin= async()=>{
+try {
+    const res = await axios.post("http://localhost:3000/signin",{
+    email,
+    password
+});
+}catch (err){
+    console.error(err)
+}
+}
+
+
+# WhiteListing The IP
+The cookies that we are setting when some-User Logs-in through postman will not work when we login from our Front-End as we are making rquests from Different port on our IP 
+So to make our IP work we have to Whitelist The IP of our FE system in backend like we have allowed cors in our app.js we have to pass some extra values inside the CORS to make it work for our FE system.
+app.use(
+  cors({
+    origin: "http://localhost:3000",//URL Of Our FrontEnd System
+    credentials: true,
+  })
+); 
+
+and also in our FrontEnd we have to set our handleLogin function in Login.jsx to {withCredentials:true}
+
+const handleLogin= async()=>{
+try {
+    const res = await axios.post("http://localhost:3000/signin",{
+    email,
+    password
+},{withCredentials:true});
+}catch (err){
+    console.error(err)
+}
+}
+So to get access to our cookies we have to solve all these things in FE and as well as BE.
