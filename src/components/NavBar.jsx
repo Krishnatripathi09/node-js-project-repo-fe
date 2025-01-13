@@ -1,5 +1,9 @@
+import { useSelector } from "react-redux"
 
 const NavBar = () => {
+const user = useSelector((store)=>store.user)
+console.log(user)
+
   return (
     <>
     <div className="navbar bg-base-300">
@@ -11,7 +15,8 @@ const NavBar = () => {
 
 
     </div>
-    <div className="dropdown dropdown-end mx-5">
+    {user && <div className="dropdown dropdown-end mx-5 flex">
+      <p className="px-4">Welcome,{user.firstName}</p>
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
           <img
@@ -31,7 +36,7 @@ const NavBar = () => {
         <li><a>Settings</a></li>
         <li><a>Logout</a></li>
       </ul>
-    </div>
+    </div>}
   </div>
 </div>
     </>

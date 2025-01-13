@@ -118,3 +118,5 @@ So to get access to our cookies we have to solve all these things in FE and as w
 # Install  Redux/toolkit and react-redux package in our App
 npm install @reduxjs/toolkit react-redux
 We can separate two libraries by space and then install them together like above 
+Then we Create a store in our utils folder appStore then we add a provider then we add reducer to store
+- Benefits of Adding Store with Redux
