@@ -114,3 +114,7 @@ try {
 }
 }
 So to get access to our cookies we have to solve all these things in FE and as well as BE.
+
+# Install  Redux/toolkit and react-redux package in our App
+npm install @reduxjs/toolkit react-redux
+We can separate two libraries by space and then install them together like above 
