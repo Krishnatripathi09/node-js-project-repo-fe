@@ -13,10 +13,9 @@ const dispatch = useDispatch();
 const navigate = useNavigate()
 const handleLogout = async()=>{
   try{
-await axios.post(BASE_URL+"/logout",{},{
-  withCredentials:true})
+await axios.post(BASE_URL+"/logout",{},{withCredentials:true})
 dispatch(removeUser());
-navigate("/login")
+return navigate("/login")
 
   }catch(err){
 //Logic to Redirect to Error page 

@@ -7,9 +7,12 @@ import { BASE_URL } from "../utils/constants";
 const Login = () => {
 
 const [email,setEmailId] = useState("elon22@gmail.com")
-const [password,setPassword]= useState("IamHappy@12312345")
+const [password,setPassword]= useState("")
+const [error, setError] = useState("");
 const dispatch = useDispatch();
 const navigate = useNavigate();
+
+
 const handleLogin= async()=>{
     
 try {
@@ -17,10 +20,11 @@ try {
     email,
     password
 },{withCredentials:true});
-dispatch(addUser(res.data))
-return navigate("/")
-
-}catch (err){
+  dispatch(addUser(res.data)); 
+ return navigate("/"); 
+}
+catch (err){
+    setError(err?.response?.data || "Something Went Wrong")
     console.error(err)
 }
 }
@@ -41,7 +45,7 @@ return navigate("/")
               </div>
               <div>
                 <input
-                  type="password"
+                  //type="password"
                   value={password}
                   placeholder="Password"
                   className="input input-bordered input-primary w-full focus:ring-2 focus:ring-blue-500"
@@ -49,6 +53,7 @@ return navigate("/")
                 />
               </div>
             </div>
+            <p className="text-red-500">{error}</p>
             <div className="card-actions justify-center mt-6">
               <button className="btn btn-primary w-full bg-blue-600 hover:bg-blue-700 text-white" onClick={handleLogin}>
                 Login
