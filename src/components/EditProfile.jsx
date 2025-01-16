@@ -13,18 +13,28 @@ const EditProfile = ({user}) => {
     const [lastName,setLastName]= useState(user.lastName)
     const [photoUrl,setPhotoUrl]= useState(user.photoUrl)
     const [gender,setGender] = useState(user.gender);
-    const [err,setError] = useState("")
+    const [error,setError] = useState("")
   const dispatch = useDispatch();
 
 
 
     const saveProfile =async()=>{
-        try{
-            const res = await axios.patch(BASE_URL +"/profile/edit",{firstName,lastName,photoUrl,gender},{withCredentials:true}
-            )
-            dispatch(addUser(res?.data?.data))
-        }catch(err){
-            setError(err.message)
+        setError("")
+        try {
+            const res = await axios.patch(
+              BASE_URL + "/profile/edit",
+              {
+                firstName,
+                lastName,
+                photoUrl,
+                gender,
+               
+              },
+              { withCredentials: true },
+            );
+            dispatch(addUser(res?.data?.data));
+          }catch(err){
+            setError(err.response.data)
         }
     }
 
@@ -38,7 +48,6 @@ const EditProfile = ({user}) => {
         <div className="space-y-4">
           <div>
             <input
-              type="email"
                value={firstName}
               placeholder="FirstName"
               className="input input-bordered input-primary w-full focus:ring-2 focus:ring-blue-500"
@@ -70,7 +79,7 @@ const EditProfile = ({user}) => {
             />
           </div>
         </div>
-        { <p className="text-red-500"></p> }
+        { <p className="text-red-500">{error}</p> }
         <div className="card-actions justify-center mt-6">
           <button className="btn btn-primary w-full bg-blue-600 hover:bg-blue-700 text-white"onClick={saveProfile} >
             Save Profile
