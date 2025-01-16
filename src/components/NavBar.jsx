@@ -18,7 +18,7 @@ dispatch(removeUser());
 return navigate("/login")
 
   }catch(err){
-//Logic to Redirect to Error page 
+console.log(err)
   }
 }
 
@@ -54,6 +54,7 @@ return navigate("/login")
           </Link>
         </li>
         <li><Link to="/connections">Connections</Link></li>
+        <li><Link to="/requests">Requests</Link></li>
         <li onClick={handleLogout}><a>Logout</a></li>
       </ul>
     </div>}

@@ -31,9 +31,9 @@ if(connections.length ==0) return <h1 className="text-bold text-2xl">No Connecti
 <h1 className="text-bold text-blue-400 text-3xl">Connections</h1>
 
 {connections.map((connection)=>{
-    const {firstName,lastName,photoUrl,gender} = connection; 
+    const {_id,firstName,lastName,photoUrl,gender} = connection; 
     return(
-        <div className=" flex m-4 p-4 border rounded-lg border-base-300 w-5/12 mx-auto">
+        <div key={_id}  className=" flex m-4 p-4 border rounded-lg border-base-300 w-5/12 mx-auto">
             <div>  <img alt="photo" className="w-20 h-20 rounded-full" src={photoUrl}/></div>
             <div className="text-left mx-3 my-3">
                 <h2 className="font-bold text-xl">
@@ -42,6 +42,7 @@ if(connections.length ==0) return <h1 className="text-bold text-2xl">No Connecti
                    
             <p>{gender}</p>
             </div>
+            
         </div>
     )
 })}
