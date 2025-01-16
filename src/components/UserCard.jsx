@@ -1,19 +1,19 @@
 
 const UserCard = ({user}) => {
-const {firstName,lastName,photoUrl} = user;
-console.log(firstName,lastName,photoUrl)
+    const {firstName,lastName,photoUrl,gender} = user||{};
   return (
-   <div className="card bg-base-100 w-96 shadow-xl">
+    <div className="card bg-base-200 w-96 shadow-xl">
     <figure>
-      <img 
-         src={user.photoUrl}
-        alt="Shoes" />
+      <img
+      src={photoUrl}
+        alt="photo" />
     </figure>
     <div className="card-body">
-      <h2 className="card-title">Shoes!</h2>
-      <p>If a dog chews shoes whose shoes does he choose?</p>
-      <div className="card-actions justify-end">
-        <button className="btn btn-primary">Buy Now</button>
+      <h2 className="card-title">{firstName +" "+ lastName}</h2> 
+       {gender && <p>{gender}</p>}
+      <div className="card-actions justify-center my-4">
+      <button className="btn btn-primary">Ignore</button>
+        <button className="btn btn-secondary">Interested</button>
       </div>
     </div>
   </div>
