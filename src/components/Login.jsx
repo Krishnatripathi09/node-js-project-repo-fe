@@ -117,7 +117,7 @@ const handleSignUp = async()=>{
             </div>
             <div className="text-center mt-4">
               <p className="text-sm text-blue-600 hover:underline cursor-pointer" onClick={()=>setIsLoginForm((value)=>!value)}>
-               {isLoginForm?"New User? Sign-Up Here 🖱":"Existing User! Login Here ✅"}
+               {isLoginForm?"New User? Sign-Up Here 🐭":"Existing User! Login Here ✅"}
               </p>
             </div>
           </div>
