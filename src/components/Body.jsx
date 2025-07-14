@@ -33,7 +33,7 @@ useEffect(()=>{
   
     fetchUser()
   
-},[])
+},)
   return (
     <div>
         <NavBar/>
