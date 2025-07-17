@@ -5,13 +5,30 @@ const Premium = () => {
 
 const handleBuyClick = async(type) =>{
     const order = await axios.post(BASE_URL+"/payment/create",{
-        type,
+        membershipType:type,
     },{withCredentials:true})
     
+const {amount,keyId,currency,notes,orderId} =order.data 
+
     //It should Open the Razorpay Dialogue Box:
-    
+const options = {
+        key: keyId, // Replace with your Razorpay key_id
+        amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        currency,
+        name: 'Dev Tinder',
+        description: 'Connect to other Devs',
+        order_id: orderId, // This is the order_id created in the backend
+        prefill: {
+          name: notes.firstName +" "+ notes.lastName,
+          email: notes.email,
+        },
+        theme: {
+          color: '#F37254'
+        },
+      };
 
-
+ const rzp = new window.Razorpay(options);
+      rzp.open()
 }
 
   return (
