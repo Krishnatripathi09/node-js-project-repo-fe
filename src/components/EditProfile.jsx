@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 import { useState } from "react";
 import UserCard from "./UserCard";
@@ -6,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import axios from "axios";
 
+// eslint-disable-next-line react/prop-types
 const EditProfile = ({user}) => {
     
 
